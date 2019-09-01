@@ -5,3 +5,8 @@ dart:
 
 dart_task:
   - test: --platform vm
+
+  # Warnings are fatal, but we only analyze the lib/ directory.
+  - dartanalyzer: --fatal-warnings lib
+
+  - dartfmt
