@@ -15,7 +15,7 @@ Future<void> main(List<String> arguments) async {
   print(
       'Current market price for KO: ${quoteRaw['GOOG']['regularMarketPrice']}.');
 
-  final Map<String, Map<String, dynamic>> quotePrice =
+  final Map<String, Map<String, String>> quotePrice =
       await Finance.downloadQuotePrice(
           QuoteProvider.yahoo, <String>['KO', 'GOOG']);
 
