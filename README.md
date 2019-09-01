@@ -2,15 +2,38 @@ A Flutter plugin for retrieving financial quote prices.
 
 [![Build Status](https://travis-ci.org/ismaelJimenez/finance.svg?branch=master)](https://travis-ci.org/ismaelJimenez/finance)
 
-A new Flutter package.
+This package contains a set of high-level functions and classes that make it easy to retrieve stocks, commodities and cryptocurrencies quote prices. It's platform-independent.
 
-## Getting Started
+# Using
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+The easiest way to use this library is via the top-level functions. They allow you to make quote price requests with minimal hassle:
+```dart
+  final Map<String, Map<String, dynamic>> quotePrice = await Finance.downloadQuotePrice(
+      QuoteProvider.yahoo, <String>['KO']);
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+  print('Number of quotes retrieved: ${quotePrice.keys.length}.');
+  print('Number of attributes retrieved for KO : ${quotePrice['KO'].keys.length}.');
+  print('Current market price for KO : ${quotePrice['KO']['price']}.');
+```
+If you're making multiple quote requests to the same server, you can request all of them in a single function call:
+```dart
+  final Map<String, Map<String, dynamic>> quotePrice = await Finance.downloadQuotePrice(
+      QuoteProvider.yahoo, <String>['KO', 'GOOG']);
+
+  print('Number of quotes retrieved: ${quotePrice.keys.length}.');
+  print('Number of attributes retrieved for KO : ${quotePrice['KO'].keys.length}.');
+  print('Current market price for KO : ${quotePrice['KO']['price']}.');
+  print('Number of attributes retrieved for GOOG : ${quotePrice['GOOG'].keys.length}.');
+  print('Current market price for KO : ${quotePrice['GOOG']['price']}.');
+```  
+  If you want all available quote data from the selected provider, you can request it with the function call:
+```dart  
+  final Map<String, Map<String, dynamic>> cryptoQuoteRaw = await Finance.downloadRawQuote(
+      QuoteProvider.coincap, <String>['bitcoin', 'ethereum']);
+
+  print('Number of quotes retrieved: ${cryptoQuoteRaw.keys.length}.');
+  print('Number of attributes retrieved for bitcoin : ${cryptoQuoteRaw['bitcoin'].keys.length}.');
+  print('Current market price for bitcoin : ${cryptoQuoteRaw['bitcoin']['priceUsd']}.');
+  print('Number of attributes retrieved for ethereum : ${cryptoQuoteRaw['ethereum'].keys.length}.');
+  print('Current market price for ethereum : ${cryptoQuoteRaw['ethereum']['priceUsd']}.');
+  ```
