@@ -5,7 +5,7 @@ Future<void> main(List<String> arguments) async {
       await Finance.downloadRawQuote(
           QuoteProvider.yahoo, <String>['KO', 'GOOG']);
 
-  print('Number of quotes retrieved: ${quoteRaw.keys.length}.');
+  print('Number of quotes retrieved : ${quoteRaw.keys.length}.');
   print(
       'Number of attributes retrieved for KO : ${quoteRaw['KO'].keys.length}.');
   print(
@@ -19,7 +19,7 @@ Future<void> main(List<String> arguments) async {
       await Finance.downloadQuotePrice(
           QuoteProvider.yahoo, <String>['KO', 'GOOG']);
 
-  print('Number of quotes retrieved: ${quotePrice.keys.length}.');
+  print('Number of quotes retrieved : ${quotePrice.keys.length}.');
   print(
       'Number of attributes retrieved for KO : ${quotePrice['KO'].keys.length}.');
   print('Current market price for KO : ${quotePrice['KO']['price']}.');
@@ -31,7 +31,7 @@ Future<void> main(List<String> arguments) async {
       await Finance.downloadRawQuote(
           QuoteProvider.coincap, <String>['bitcoin', 'ethereum']);
 
-  print('Number of quotes retrieved: ${cryptoQuoteRaw.keys.length}.');
+  print('Number of quotes retrieved : ${cryptoQuoteRaw.keys.length}.');
   print(
       'Number of attributes retrieved for bitcoin : ${cryptoQuoteRaw['bitcoin'].keys.length}.');
   print(
