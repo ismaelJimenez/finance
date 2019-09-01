@@ -1,5 +1,6 @@
 A Dart plugin for retrieving financial quote prices.
 
+[![pub package](https://pub.dev/packages/finance.svg)](https://pub.dev/packages/finance)
 [![Build Status](https://travis-ci.org/ismaelJimenez/finance.svg?branch=master)](https://travis-ci.org/ismaelJimenez/finance)
 
 This package contains a set of high-level functions and classes that make it easy to retrieve stocks, commodities and cryptocurrencies quote prices. It's platform-independent.
