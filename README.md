@@ -18,7 +18,7 @@ The easiest way to use this library is via the top-level functions. They allow y
 ```
 If you're making multiple quote requests to the same server, you can request all of them in a single function call:
 ```dart
-  final Map<String, Map<String, dynamic>> quotePrice = await Finance.downloadQuotePrice(
+  final Map<String, Map<String, String>> quotePrice = await Finance.downloadQuotePrice(
       QuoteProvider.yahoo, <String>['KO', 'GOOG']);
 
   print('Number of quotes retrieved: ${quotePrice.keys.length}.');
