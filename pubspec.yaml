@@ -1,5 +1,5 @@
 name: finance
-description: A Flutter plugin for retrieving financial quote prices.
+description: A Dart plugin for retrieving financial quote prices.
 version: 0.0.1
 author: "Ismael Jiménez Martínez <ijimenezm@hotmail.es>"
 homepage: https://github.com/ismaelJimenez/finance
