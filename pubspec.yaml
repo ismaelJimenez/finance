@@ -1,6 +1,6 @@
 name: finance
 description: A Dart plugin that provides a set of high-level functions and classes that make it easy to retrieve financial quote prices for stocks (Amazon, Google, ...), commodities (Gold, Oil, ...) and crypto-currencies (Bitcoin, Ethereum, ...). It's platform-independent, supports iOS and Android.
-version: 0.0.2
+version: 0.0.3
 author: "Ismael Jiménez <ijimenezm@hotmail.es>"
 homepage: https://github.com/ismaelJimenez/finance
 
