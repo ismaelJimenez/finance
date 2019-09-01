@@ -12,8 +12,8 @@ The easiest way to use this library is via the top-level functions. They allow y
       QuoteProvider.yahoo, <String>['KO']);
 
   print('Number of quotes retrieved: ${quotePrice.keys.length}.');
-  print('Number of attributes retrieved for KO : ${quotePrice['KO'].keys.length}.');
-  print('Current market price for KO : ${quotePrice['KO']['price']}.');
+  print('Number of attributes retrieved for KO: ${quotePrice['KO'].keys.length}.');
+  print('Current market price for KO: ${quotePrice['KO']['price']}.');
 ```
 If you're making multiple quote requests to the same server, you can request all of them in a single function call:
 ```dart
@@ -21,10 +21,10 @@ If you're making multiple quote requests to the same server, you can request all
       QuoteProvider.yahoo, <String>['KO', 'GOOG']);
 
   print('Number of quotes retrieved: ${quotePrice.keys.length}.');
-  print('Number of attributes retrieved for KO : ${quotePrice['KO'].keys.length}.');
-  print('Current market price for KO : ${quotePrice['KO']['price']}.');
+  print('Number of attributes retrieved for KO: ${quotePrice['KO'].keys.length}.');
+  print('Current market price for KO: ${quotePrice['KO']['price']}.');
   print('Number of attributes retrieved for GOOG : ${quotePrice['GOOG'].keys.length}.');
-  print('Current market price for KO : ${quotePrice['GOOG']['price']}.');
+  print('Current market price for KO: ${quotePrice['GOOG']['price']}.');
 ```  
   If you want all available quote data from the selected provider, you can request it with the function call:
 ```dart  
@@ -33,9 +33,9 @@ If you're making multiple quote requests to the same server, you can request all
 
   print('Number of quotes retrieved: ${cryptoQuoteRaw.keys.length}.');
   print('Number of attributes retrieved for bitcoin : ${cryptoQuoteRaw['bitcoin'].keys.length}.');
-  print('Current market price for bitcoin : ${cryptoQuoteRaw['bitcoin']['priceUsd']}.');
-  print('Number of attributes retrieved for ethereum : ${cryptoQuoteRaw['ethereum'].keys.length}.');
-  print('Current market price for ethereum : ${cryptoQuoteRaw['ethereum']['priceUsd']}.');
+  print('Current market price for bitcoin: ${cryptoQuoteRaw['bitcoin']['priceUsd']}.');
+  print('Number of attributes retrieved for ethereum: ${cryptoQuoteRaw['ethereum'].keys.length}.');
+  print('Current market price for ethereum: ${cryptoQuoteRaw['ethereum']['priceUsd']}.');
   ```
   
   # TERMS & CONDITIONS
