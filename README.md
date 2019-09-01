@@ -3,8 +3,7 @@ A Dart plugin for retrieving financial quote prices.
 [![pub package](https://img.shields.io/pub/v/finance.svg)](https://pub.dev/packages/finance)
 [![Build Status](https://travis-ci.org/ismaelJimenez/finance.svg?branch=master)](https://travis-ci.org/ismaelJimenez/finance)
 
-This package contains a set of high-level functions and classes that make it easy to retrieve stocks (Amazon, Google, ...), commodities (Gold, Oil, ...) and crypto-currencies (Bitcoin, Ethereum, ...) quote prices. It's platform-independent.
-
+This package provides a set of high-level functions and classes that make it easy to retrieve financial quote prices for stocks (Amazon, Google, ...), commodities (Gold, Oil, ...) and crypto-currencies (Bitcoin, Ethereum, ...). It's platform-independent, supports iOS and Android.
 # Using
 
 The easiest way to use this library is via the top-level functions. They allow you to make quote price requests with minimal hassle:
