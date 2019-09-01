@@ -37,3 +37,7 @@ If you're making multiple quote requests to the same server, you can request all
   print('Number of attributes retrieved for ethereum : ${cryptoQuoteRaw['ethereum'].keys.length}.');
   print('Current market price for ethereum : ${cryptoQuoteRaw['ethereum']['priceUsd']}.');
   ```
+  
+  # TERMS & CONDITIONS
+
+Quote information fetched through this module is bound by the respective quote providers terms and conditions.
