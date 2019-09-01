@@ -1,4 +1,4 @@
-# finance_quote
+# finance
 
 A new Flutter package.
 
