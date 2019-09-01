@@ -1,6 +1,6 @@
 name: finance
 description: A Dart plugin for retrieving financial quote prices.
-version: 0.0.1
+version: 0.0.2
 author: "Ismael Jiménez <ijimenezm@hotmail.es>"
 homepage: https://github.com/ismaelJimenez/finance
 
