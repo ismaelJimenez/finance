@@ -1,3 +1,7 @@
+A Flutter plugin for retrieving financial quote prices.
+
+[![Build Status](https://travis-ci.org/ismaelJimenez/finance.svg?branch=master)](https://travis-ci.org/ismaelJimenez/finance)
+
 # finance
 
 A new Flutter package.
