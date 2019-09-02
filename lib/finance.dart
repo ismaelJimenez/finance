@@ -66,4 +66,38 @@ class Finance {
         : ((1 + maskedRate * when) * (temp - 1) / maskedRate);
     return -(fv + pv * temp) / fact;
   }
+
+  /// Returns the the number of periodic payments.
+  ///
+  /// The `rate` argument specifies the rate of interest as decimal (not per cent) per period.
+  ///
+  ///  The `pmt` argument specifies the payment. By convention, the negative sign represents
+  ///  cash flow out (i.e. money not available today).
+  ///
+  ///  The `pv` argument specifies the present value. By convention, the negative sign represents
+  ///  cash flow out.
+  ///
+  /// If specified, the `fv` argument specifies the future value. (default=0). By convention, the negative
+  /// sign represent cash flow out.
+  ///
+  /// If specified, the `end` argument specifies when payments are due, at the end or beginning
+  /// of each period. (default=true).
+  ///
+  static num nper(
+      {@required num rate,
+      @required num pmt,
+      @required num pv,
+      num fv = 0,
+      bool end = true}) {
+    final int when = end ? 0 : 1;
+
+    try {
+      final num A = -(fv + pv) / pmt;
+      final num z = pmt * (1 + rate * when) / rate;
+      final num B = log((-fv + z) / (pv + z)) / log(1 + rate);
+      return (rate == 0) ? A : B;
+    } catch (e) {
+      return (-fv + pv) / pmt;
+    }
+  }
 }

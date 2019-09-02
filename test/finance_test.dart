@@ -47,4 +47,25 @@ void main() {
           -302.131702973054);
     });
   });
+
+  group('NPER [Finance]', () {
+    test('Rate = 0', () {
+      expect(Finance.nper(rate: 0.0, pmt: -2000, pv: 0, fv: 100000), 50);
+    });
+
+    test('Payments due at the end of each period - Test 1', () {
+      expect(Finance.nper(rate: 0.075, pmt: -2000, pv: 0, fv: 100000),
+          21.54494419732334);
+    });
+
+    test('Payments due at the end of each period - Test 2', () {
+      expect(Finance.nper(rate: 0.07 / 12, pmt: -150, pv: 8000), 64.07334877066185);
+    });
+
+    test('Payments due at the beginning of each period', () {
+      expect(
+          Finance.nper(rate: 0.075, pmt: -2000, pv: 0, fv: 100000, end: false),
+          20.761564405189535);
+    });
+  });
 }

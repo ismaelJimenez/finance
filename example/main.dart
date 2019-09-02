@@ -9,4 +9,8 @@ void main(List<String> arguments) {
   // What is the monthly payment needed to pay off a $100,000 loan in 10
   // years at an annual interest rate of 2.5%?
   print(Finance.pmt(rate: 0.025 / 12, nper: 10 * 12, pv: 100000));
+
+  // If you only had $500/month to pay towards the loan, how long would it take
+  // to pay-off a loan of $10,000 at 3% annual interest?
+  print(Finance.nper(rate: 0.03 / 12, pmt: -500, pv: 10000));
 }
