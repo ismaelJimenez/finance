@@ -1,3 +1,7 @@
+## [0.0.5] - 2/9/19
+
+*  Extracted quote retrieval to finance_quote package. Added fv and pmt functions.
+
 ## [0.0.4] - 1/9/19
 
 *  Documentation fixes.

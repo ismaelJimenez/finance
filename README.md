@@ -1,43 +1,29 @@
-A Dart plugin for retrieving financial quote prices.
+The fundamental package for financial computing with Dart.
 
 [![pub package](https://img.shields.io/pub/v/finance.svg)](https://pub.dev/packages/finance)
 [![Build Status](https://travis-ci.org/ismaelJimenez/finance.svg?branch=master)](https://travis-ci.org/ismaelJimenez/finance)
 
-This package provides a set of high-level functions and classes that make it easy to retrieve financial quote information and prices for stocks (Amazon, Google, ...), commodities (Gold, Oil, ...) and crypto-currencies (Bitcoin, Ethereum, ...). It's platform-independent, supports iOS and Android.
+This package provides a set of high-level functions and classes that make it easy to compute financial ratios. It's platform-independent, supports iOS and Android.
 # Using
 
-The easiest way to use this library is via the top-level functions. They allow you to make quote price requests with minimal hassle:
-```dart
-  final Map<String, Map<String, dynamic>> quotePrice = await Finance.downloadQuotePrice(
-      QuoteProvider.yahoo, <String>['KO']);
+The easiest way to use this library is via the top-level functions. They allow you to make financial calculations with minimal hassle:
 
-  print('Number of quotes retrieved: ${quotePrice.keys.length}.');
-  print('Number of attributes retrieved for KO: ${quotePrice['KO'].keys.length}.');
-  print('Current market price for KO: ${quotePrice['KO']['price']}.');
+## Future Value calculation
+
+What is the future value after 30 years of saving $1000 now, with an additional monthly savings of $100.  Assume the interest rate is 7% (annually) compounded monthly?
+
+```dart
+  print(Finance.fv(rate: 0.07 / 12, nper: 30 * 12, pmt: -100, pv: -1000));
 ```
-If you're making multiple quote requests to the same server, you can request all of them in a single function call:
+
+Thus, saving $1000 today and then $100 a month at 7% annual interest leads to $130,113.59 available to spend in 30 years.
+
+## Payments calculation
+
+What is the monthly payment needed to pay off a $100,000 loan in 10 years at an annual interest rate of 2.5%?
+
 ```dart
-  final Map<String, Map<String, String>> quotePrice = await Finance.downloadQuotePrice(
-      QuoteProvider.yahoo, <String>['KO', 'GOOG']);
-
-  print('Number of quotes retrieved: ${quotePrice.keys.length}.');
-  print('Number of attributes retrieved for KO: ${quotePrice['KO'].keys.length}.');
-  print('Current market price for KO: ${quotePrice['KO']['price']}.');
-  print('Number of attributes retrieved for GOOG : ${quotePrice['GOOG'].keys.length}.');
-  print('Current market price for KO: ${quotePrice['GOOG']['price']}.');
+  print(Finance.pmt(rate: 0.025 / 12, nper: 10 * 12, pv: 100000));
 ```  
-  If you want all available quote data from the selected provider, you can request it with the function call:
-```dart  
-  final Map<String, Map<String, dynamic>> cryptoQuoteRaw = await Finance.downloadRawQuote(
-      QuoteProvider.coincap, <String>['bitcoin', 'ethereum']);
 
-  print('Number of quotes retrieved: ${cryptoQuoteRaw.keys.length}.');
-  print('Number of attributes retrieved for bitcoin : ${cryptoQuoteRaw['bitcoin'].keys.length}.');
-  print('Current market price for bitcoin: ${cryptoQuoteRaw['bitcoin']['priceUsd']}.');
-  print('Number of attributes retrieved for ethereum: ${cryptoQuoteRaw['ethereum'].keys.length}.');
-  print('Current market price for ethereum: ${cryptoQuoteRaw['ethereum']['priceUsd']}.');
-  ```
-  
-  # TERMS & CONDITIONS
-
-Quote information fetched through this module is bound by the quote providers terms and conditions.
+Thus, in order to pay-off (i.e., have a future-value of 0) the $100,000 obtained today, a monthly payment of $942.69 would be required.  Note that this example illustrates usage of future value having a default value of 0.

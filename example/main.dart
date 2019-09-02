@@ -1,43 +1,12 @@
 import 'package:finance/finance.dart';
 
-Future<void> main(List<String> arguments) async {
-  final Map<String, Map<String, dynamic>> quoteRaw =
-      await Finance.downloadRawQuote(
-          QuoteProvider.yahoo, <String>['KO', 'GOOG']);
+void main(List<String> arguments) {
+  // What is the future value after 30 years of saving $1000 now, with
+  // an additional monthly savings of $100.  Assume the interest rate is
+  // 7% (annually) compounded monthly?
+  print(Finance.fv(rate: 0.07 / 12, nper: 30 * 12, pmt: -100, pv: -1000));
 
-  print('Number of quotes retrieved: ${quoteRaw.keys.length}.');
-  print(
-      'Number of attributes retrieved for KO: ${quoteRaw['KO'].keys.length}.');
-  print(
-      'Current market price for KO: ${quoteRaw['GOOG']['regularMarketPrice']}.');
-  print(
-      'Number of attributes retrieved for GOOG: ${quoteRaw['GOOG'].keys.length}.');
-  print(
-      'Current market price for KO: ${quoteRaw['GOOG']['regularMarketPrice']}.');
-
-  final Map<String, Map<String, String>> quotePrice =
-      await Finance.downloadQuotePrice(
-          QuoteProvider.yahoo, <String>['KO', 'GOOG']);
-
-  print('Number of quotes retrieved: ${quotePrice.keys.length}.');
-  print(
-      'Number of attributes retrieved for KO: ${quotePrice['KO'].keys.length}.');
-  print('Current market price for KO: ${quotePrice['KO']['price']}.');
-  print(
-      'Number of attributes retrieved for GOOG: ${quotePrice['GOOG'].keys.length}.');
-  print('Current market price for KO: ${quotePrice['GOOG']['price']}.');
-
-  final Map<String, Map<String, dynamic>> cryptoQuoteRaw =
-      await Finance.downloadRawQuote(
-          QuoteProvider.coincap, <String>['bitcoin', 'ethereum']);
-
-  print('Number of quotes retrieved: ${cryptoQuoteRaw.keys.length}.');
-  print(
-      'Number of attributes retrieved for bitcoin: ${cryptoQuoteRaw['bitcoin'].keys.length}.');
-  print(
-      'Current market price for bitcoin: ${cryptoQuoteRaw['bitcoin']['priceUsd']}.');
-  print(
-      'Number of attributes retrieved for ethereum: ${cryptoQuoteRaw['ethereum'].keys.length}.');
-  print(
-      'Current market price for ethereum: ${cryptoQuoteRaw['ethereum']['priceUsd']}.');
+  // What is the monthly payment needed to pay off a $100,000 loan in 10
+  // years at an annual interest rate of 2.5%?
+  print(Finance.pmt(rate: 0.025 / 12, nper: 10 * 12, pv: 100000));
 }
