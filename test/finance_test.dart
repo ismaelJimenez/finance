@@ -8,8 +8,7 @@ import 'package:test/test.dart';
 void main() {
   group('FV [Finance]', () {
     test('Rate = 0', () {
-      expect(Finance.fv(rate: 0.0, nper: 20, pmt: -2000, pv: 0),
-          40000.0);
+      expect(Finance.fv(rate: 0.0, nper: 20, pmt: -2000, pv: 0), 40000.0);
     });
 
     test('Payments due at the end of each period - Test 1', () {
@@ -34,15 +33,18 @@ void main() {
     });
 
     test('Payments due at the end of each period - Test 1', () {
-      expect(Finance.pmt(rate: 0.08 / 12, nper: 5 * 12, pv: 15000), -304.14591432620773);
+      expect(Finance.pmt(rate: 0.08 / 12, nper: 5 * 12, pv: 15000),
+          -304.14591432620773);
     });
 
     test('Payments due at the end of each period - Test 2', () {
-      expect(Finance.pmt(rate: 0.075/12, nper: 12*15, pv: 200000), -1854.0247200054619);
+      expect(Finance.pmt(rate: 0.075 / 12, nper: 12 * 15, pv: 200000),
+          -1854.0247200054619);
     });
 
     test('Payments due at the beginning of each period', () {
-      expect(Finance.pmt(rate: 0.08 / 12, nper: 5 * 12, pv: 15000, end:false), -302.131702973054);
+      expect(Finance.pmt(rate: 0.08 / 12, nper: 5 * 12, pv: 15000, end: false),
+          -302.131702973054);
     });
   });
 }
