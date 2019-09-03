@@ -16,9 +16,18 @@ void main(List<String> arguments) {
 
   // What is the amortization schedule for a 1 year loan of $2500 at 8.24%
   // interest per year compounded monthly?
-  print(List<int>.generate(12, (int index) => index + 1)
-    .map((int per) => {
-      'per' : per,
-      'ipmt': Finance.ipmt(rate: 0.0824/12, per: per, nper: 1*12, pv: 2500),
-    }));
+  Iterable<Map<String, num>> payments =
+      List<int>.generate(12, (int index) => index + 1)
+          .map((int per) => <String, num>{
+                'per': per,
+                'pmt': Finance.pmt(rate: 0.0824 / 12, nper: 1 * 12, pv: 2500),
+                'ppmt': Finance.ppmt(
+                    rate: 0.0824 / 12, per: per, nper: 1 * 12, pv: 2500),
+                'ipmt': Finance.ipmt(
+                    rate: 0.0824 / 12, per: per, nper: 1 * 12, pv: 2500),
+              });
+
+  payments.forEach(print);
+  final num interestPaid = payments.fold(0, (p, c) => p + c['ipmt']);
+  print(interestPaid);
 }

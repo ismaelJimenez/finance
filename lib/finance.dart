@@ -144,5 +144,34 @@ class Finance {
         bool end = true}) {
     return fv(rate: rate, nper: per-1, pmt: pmt, pv: pv, end: end);
   }
+
+  /// Returns the payment against loan principal.
+  ///
+  /// The `rate` argument specifies the rate of interest as decimal (not per cent) per period.
+  ///
+  ///  The `per` argument specifies the interest paid against the loan changes during the life or the loan.. By convention, the negative sign represents
+  ///  cash flow out (i.e. money not available today).
+  ///
+  /// The `nper` argument specifies the number of compounding periods.
+  ///
+  ///  The `pv` argument specifies the present value. By convention, the negative sign represents
+  ///  cash flow out.
+  ///
+  /// If specified, the `fv` argument specifies the future value. (default=0). By convention, the negative
+  /// sign represent cash flow out.
+  ///
+  /// If specified, the `end` argument specifies when payments are due, at the end or beginning
+  /// of each period. (default=true).
+  ///
+  static num ppmt(
+      {@required num rate,
+        @required num per,
+        @required num nper,
+        @required num pv,
+        num fv = 0,
+        bool end = true}) {
+    final num total = pmt(rate: rate, nper: nper, pv: pv, fv: fv, end: end);
+    return total - ipmt(rate: rate, per:per, nper: nper, pv: pv, fv: fv, end: end);
+  }
 }
 
