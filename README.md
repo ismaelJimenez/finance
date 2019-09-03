@@ -84,7 +84,7 @@ What is the interest rate for a $8,000 loan if the loan term is 5 years and and 
   print(Finance.rate(nper: 60, pmt: -152.5, pv: 8000, fv: 0));
 ```
 
-The calculated interest rate is 0.45% monthly, or 5.42& annually.
+The calculated interest rate is 0.45% monthly, or 5.42% annually.
 
 ## Net present value calculation
 

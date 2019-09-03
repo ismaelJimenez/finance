@@ -380,17 +380,13 @@ class Finance {
   /// ----------
   ///    .. [G] L. J. Gitman, "Principles of Managerial Finance, Brief," 3rd ed.,
   ///       Addison-Wesley, 2003, pg. 346.
-  static num npv(
-      {@required num rate,
-        @required List<num> values}) {
+  static num npv({@required num rate, @required List<num> values}) {
     return List<int>.generate(values.length, (int index) => index)
         .map((int index) => values[index] / pow(1 + rate, index))
         .fold(0, (num p, num c) => p + c);
   }
 
-  static num _npvPrime(
-      {@required num rate,
-        @required List<num> values}) {
+  static num _npvPrime({@required num rate, @required List<num> values}) {
     return List<int>.generate(values.length, (int index) => index)
         .map((int index) => -index * values[index] / pow(1 + rate, index + 1))
         .fold(0, (num p, num c) => p + c);
@@ -399,7 +395,7 @@ class Finance {
   static num _npv_div_npvPrime(num rate, List<num> values) {
     final num t1 = npv(rate: rate, values: values);
     final num t2 = _npvPrime(rate: rate, values: values);
-    return t1/t2;
+    return t1 / t2;
   }
 
   /// Returns the Internal Rate of Return for periodic input values.
@@ -432,9 +428,9 @@ class Finance {
 
   static num irr(
       {@required List<num> values,
-        num guess = 0.1,
-        num tol = 1e-6,
-        num maxIter = 100}) {
+      num guess = 0.1,
+      num tol = 1e-6,
+      num maxIter = 100}) {
     num rn = guess;
     num iterator = 0;
     bool close = false;

@@ -156,7 +156,8 @@ void main() {
     });
 
     test('Payments due at the end of each period - Test 2', () {
-      expect(Finance.pv(rate: 0.05 / 12, nper: 10 * 12, pmt: -100, fv: 15692.93),
+      expect(
+          Finance.pv(rate: 0.05 / 12, nper: 10 * 12, pmt: -100, fv: 15692.93),
           -100.00067131625819);
     });
 
@@ -168,31 +169,41 @@ void main() {
 
   group('RATE [Finance]', () {
     test('Payments due at the end of each period - Test 1', () {
-      expect(Finance.rate(nper: 10, pmt: 0, pv: -3500, fv: 10000), 0.11069085371426901);
+      expect(Finance.rate(nper: 10, pmt: 0, pv: -3500, fv: 10000),
+          0.11069085371426901);
     });
 
     test('Payments due at the end of each period - Test 2', () {
-      expect(Finance.rate(nper: 60, pmt: -152.5, pv: 8000, fv: 0), 0.004513487857250067);
+      expect(Finance.rate(nper: 60, pmt: -152.5, pv: 8000, fv: 0),
+          0.004513487857250067);
     });
 
     test('Payments due at the beginning of each period', () {
-      expect(Finance.rate(nper: 60, pmt: -152.5, pv: 8000, fv: 0, end: false), 0.004674329929197296);
+      expect(Finance.rate(nper: 60, pmt: -152.5, pv: 8000, fv: 0, end: false),
+          0.004674329929197296);
     });
   });
 
   group('NPV [Finance]', () {
     test('Test 1', () {
-      expect(Finance.npv(rate: 0.281, values: <num>[-100, 39, 59, 55, 20]), -0.00847859163845488);
+      expect(Finance.npv(rate: 0.281, values: <num>[-100, 39, 59, 55, 20]),
+          -0.00847859163845488);
     });
 
     test('Test 2', () {
-      expect(Finance.npv(rate: 0.05, values: <num>[-15000, 1500, 2500, 3500, 4500, 6000]), 122.89485495093959);
+      expect(
+          Finance.npv(
+              rate: 0.05, values: <num>[-15000, 1500, 2500, 3500, 4500, 6000]),
+          122.89485495093959);
     });
   });
 
   group('IRR [Finance]', () {
     test('Test 1', () {
-      expect(Finance.irr(values: <num>[-150000, 15000, 25000, 35000, 45000, 60000]), 0.05243288885941369);
+      expect(
+          Finance.irr(
+              values: <num>[-150000, 15000, 25000, 35000, 45000, 60000]),
+          0.05243288885941369);
     });
 
     test('Test 2', () {
@@ -200,11 +211,13 @@ void main() {
     });
 
     test('Test 3', () {
-      expect(Finance.irr(values: <num>[-100, 39, 59, 55, 20]), 0.2809484211599611);
+      expect(
+          Finance.irr(values: <num>[-100, 39, 59, 55, 20]), 0.2809484211599611);
     });
 
     test('Test 4', () {
-      expect(Finance.irr(values: <num>[-100, 100, 0, -7]), -0.08329966618495913);
+      expect(
+          Finance.irr(values: <num>[-100, 100, 0, -7]), -0.08329966618495913);
     });
 
     test('Test 5', () {
@@ -212,11 +225,12 @@ void main() {
     });
 
     test('Test 6', () {
-      expect(Finance.irr(values: <num>[-5, 10.5, 1, -8, 1]), 0.08859833852439152);
+      expect(
+          Finance.irr(values: <num>[-5, 10.5, 1, -8, 1]), 0.08859833852439152);
     });
 
     test('Test 7 - No solution', () {
-      expect(Finance.irr(values: <num>[-1, -2, -3]), 'Infinity');
+      expect(Finance.irr(values: <num>[-1, -2, -3]), double.infinity);
     });
   });
 }

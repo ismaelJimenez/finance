@@ -51,6 +51,6 @@ void main(List<String> arguments) {
   //  intervals:  1500, 2500, 3500, 4500, 6000?.  Assuming the ending value is 0
   //  and a discount rate of 5%.
 
-  print(Finance.npv(rate: 0.05, values: <num>[-15000, 1500, 2500, 3500, 4500, 6000]));
-
+  print(Finance.npv(
+      rate: 0.05, values: <num>[-15000, 1500, 2500, 3500, 4500, 6000]));
 }
