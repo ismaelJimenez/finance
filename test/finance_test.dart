@@ -59,7 +59,8 @@ void main() {
     });
 
     test('Payments due at the end of each period - Test 2', () {
-      expect(Finance.nper(rate: 0.07 / 12, pmt: -150, pv: 8000), 64.07334877066185);
+      expect(Finance.nper(rate: 0.07 / 12, pmt: -150, pv: 8000),
+          64.07334877066185);
     });
 
     test('Payments due at the beginning of each period', () {
@@ -75,53 +76,93 @@ void main() {
     });
 
     test('Payments due at the end of each period - Test 1', () {
-      expect(Finance.ipmt(rate: 0.1 / 12, per: 1, nper: 24, pv: 2000), -16.666666666666668);
+      expect(Finance.ipmt(rate: 0.1 / 12, per: 1, nper: 24, pv: 2000),
+          -16.666666666666668);
     });
 
     test('Payments due at the end of each period - Test 2', () {
-      expect(Finance.ipmt(rate: 0.0824/12, per: 1, nper: 1*12, pv: 2500), -17.166666666666668);
+      expect(Finance.ipmt(rate: 0.0824 / 12, per: 1, nper: 1 * 12, pv: 2500),
+          -17.166666666666668);
     });
 
     test('Payments due at the end of each period - Test 3', () {
-      expect(Finance.ipmt(rate: 0.0824/12, per: 2, nper: 1*12, pv: 2500), -15.789337457350777);
+      expect(Finance.ipmt(rate: 0.0824 / 12, per: 2, nper: 1 * 12, pv: 2500),
+          -15.789337457350777);
     });
 
     test('Payments due at the beginning of each period - Test 1', () {
-          expect(Finance.ipmt(rate: 0.1 / 12, per: 1, nper: 24, pv: 2000, end: false), 0);
+      expect(
+          Finance.ipmt(rate: 0.1 / 12, per: 1, nper: 24, pv: 2000, end: false),
+          0);
     });
 
     test('Payments due at the beginning of each period - Test 2', () {
-      expect(Finance.ipmt(rate: 0.0824/12, per: 2, nper: 1*12, pv: 2500, end: false), -15.681656747683354);
+      expect(
+          Finance.ipmt(
+              rate: 0.0824 / 12, per: 2, nper: 1 * 12, pv: 2500, end: false),
+          -15.681656747683354);
     });
   });
 
   group('PPMT [Finance]', () {
     test('Rate = 0', () {
-      expect(Finance.ppmt(rate: 0.0, per: 1, nper: 24, pv: 2000), -83.33333333333333);
+      expect(Finance.ppmt(rate: 0.0, per: 1, nper: 24, pv: 2000),
+          -83.33333333333333);
     });
 
     test('Payments due at the end of each period - Test 1', () {
-      expect(Finance.ppmt(rate: 0.1 / 12, per: 1, nper: 60, pv: 55000), -710.254125786425);
+      expect(Finance.ppmt(rate: 0.1 / 12, per: 1, nper: 60, pv: 55000),
+          -710.254125786425);
     });
 
     test('Payments due at the end of each period - Test 2', () {
-      expect(Finance.ppmt(rate: 0.23 / 12, per: 1, nper: 60, pv: 10000000000), -90238044.232277036);
+      expect(Finance.ppmt(rate: 0.23 / 12, per: 1, nper: 60, pv: 10000000000),
+          -90238044.232277036);
     });
 
     test('Payments due at the end of each period - Test 2', () {
-      expect(Finance.ppmt(rate: 0.0824/12, per: 1, nper: 1*12, pv: 2500), -200.58192368678277);
+      expect(Finance.ppmt(rate: 0.0824 / 12, per: 1, nper: 1 * 12, pv: 2500),
+          -200.58192368678277);
     });
 
     test('Payments due at the end of each period - Test 3', () {
-      expect(Finance.ppmt(rate: 0.0824/12, per: 2, nper: 1*12, pv: 2500), -201.95925289609866);
+      expect(Finance.ppmt(rate: 0.0824 / 12, per: 2, nper: 1 * 12, pv: 2500),
+          -201.95925289609866);
     });
 
     test('Payments due at the beginning of each period - Test 1', () {
-      expect(Finance.ppmt(rate: 0.1 / 12, per: 1, nper: 24, pv: 2000, end: false), -91.52712661986774);
+      expect(
+          Finance.ppmt(rate: 0.1 / 12, per: 1, nper: 24, pv: 2000, end: false),
+          -91.52712661986774);
     });
 
     test('Payments due at the beginning of each period - Test 2', () {
-      expect(Finance.ppmt(rate: 0.0824/12, per: 2, nper: 1*12, pv: 2500, end: false), -200.58192368678274);
+      expect(
+          Finance.ppmt(
+              rate: 0.0824 / 12, per: 2, nper: 1 * 12, pv: 2500, end: false),
+          -200.58192368678274);
+    });
+  });
+
+  group('PV [Finance]', () {
+    test('Rate = 0', () {
+      expect(Finance.pv(rate: 0, nper: 20, pmt: 12000, fv: 0, end: false),
+          -240000.0);
+    });
+
+    test('Payments due at the end of each period - Test 1', () {
+      expect(Finance.pv(rate: 0.07, nper: 20, pmt: 12000, fv: 0),
+          -127128.17094619398);
+    });
+
+    test('Payments due at the end of each period - Test 2', () {
+      expect(Finance.pv(rate: 0.05 / 12, nper: 10 * 12, pmt: -100, fv: 15692.93),
+          -100.00067131625819);
+    });
+
+    test('Payments due at the beginning of each period', () {
+      expect(Finance.pv(rate: 0.07, nper: 20, pmt: 12000, fv: 0, end: false),
+          -136027.14291242755);
     });
   });
 }

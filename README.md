@@ -37,3 +37,39 @@ If we only had $500/month to pay towards the loan, how long would it take to pay
  ```  
  
 So, over 20 months would be required to pay off the loan.
+
+## Principal and Interest payment calculation
+
+What is the amortization schedule for a 1 year loan of $5000 at 10% interest per year compounded monthly? 
+And the total interest payments?
+ ```dart
+  final Iterable<Map<String, num>> payments =
+      List<int>.generate(12, (int index) => index + 1).map((int per) =>
+          <String, num>{
+            'per': per,
+            'pmt': Finance.pmt(rate: 0.1 / 12, nper: 1 * 12, pv: 5000),
+            'ppmt':
+                Finance.ppmt(rate: 0.1 / 12, per: per, nper: 1 * 12, pv: 5000),
+            'ipmt':
+                Finance.ipmt(rate: 0.1 / 12, per: per, nper: 1 * 12, pv: 5000),
+          });
+
+  payments.forEach(print);
+
+  final num interestPaid =
+      payments.fold(0, (num p, Map<String, num> c) => p + c['ipmt']);
+  print(interestPaid);
+ ```
+ 
+Thus, the total interest paid are close to $275.
+
+## Present Value calculation
+
+What is the present value (e.g., the initial investment) of an investment that needs to total $20000 
+after 10 years of saving $100 every month?  Assume the interest rate is 7% (annually) compounded monthly.
+```dart
+  print(Finance.pv(rate: 0.05 / 12, nper: 10 * 12, pmt: -100, fv: 15692.93));
+```
+
+So, to end up with $20,000 in 10 years saving $100 a month at 7% annual interest, one's initial deposit 
+should be $1,339.28.

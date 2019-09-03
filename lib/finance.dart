@@ -173,5 +173,33 @@ class Finance {
     final num total = pmt(rate: rate, nper: nper, pv: pv, fv: fv, end: end);
     return total - ipmt(rate: rate, per:per, nper: nper, pv: pv, fv: fv, end: end);
   }
+
+  /// Returns the present value of a series of payments or investments.
+  ///
+  /// The `rate` argument specifies the rate of interest as decimal (not per cent) per period.
+  ///
+  /// The `nper` argument specifies the number of compounding periods.
+  ///
+  ///  The `pmt` argument specifies the payment. By convention, the negative sign represents
+  ///  cash flow out (i.e. money not available today).
+  ///
+  ///  The `fv` argument specifies the future value. By convention, the negative sign represents
+  ///  cash flow out (i.e. money not available today).
+  ///
+  /// If specified, the `end` argument specifies when payments are due, at the end or beginning
+  /// of each period. Per default, end of each period is selected.
+  ///
+  static num pv(
+      {@required num rate,
+        @required num nper,
+        @required num pmt,
+        @required num fv,
+        bool end = true}) {
+    final int when = end ? 0 : 1;
+    final num temp = pow(1 + rate, nper);
+    final num fact =
+    (rate == 0) ? nper : ((1 + rate * when) * (temp - 1) / rate);
+    return -(fv + pmt*fact)/temp;
+  }
 }
 

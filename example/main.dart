@@ -31,4 +31,15 @@ void main(List<String> arguments) {
   final num interestPaid =
       payments.fold(0, (num p, Map<String, num> c) => p + c['ipmt']);
   print(interestPaid);
+
+  //  What is the present value (e.g., the initial investment) of an investment that
+  //  needs to total $20000 after 10 years of saving $100 every month?  Assume the
+  //  interest rate is 7% (annually) compounded monthly.
+  print(Finance.pv(rate: 0.07 / 12, nper: 10 * 12, pmt: -100, fv: 20000));
+
+//  -100.00067131625819
+//  By convention, the negative sign represents cash flow out
+//  (i.e., money not available today).  Thus, to end up with
+//  $15,692.93 in 10 years saving $100 a month at 5% annual
+//  interest, one's initial deposit should also be $100.
 }
