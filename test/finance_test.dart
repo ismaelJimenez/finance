@@ -68,4 +68,30 @@ void main() {
           20.761564405189535);
     });
   });
+
+  group('IPMT [Finance]', () {
+    test('Rate = 0', () {
+      expect(Finance.ipmt(rate: 0.0, per: 1, nper: 24, pv: 2000), 0);
+    });
+
+    test('Payments due at the end of each period - Test 1', () {
+      expect(Finance.ipmt(rate: 0.1 / 12, per: 1, nper: 24, pv: 2000), -16.666666666666668);
+    });
+
+    test('Payments due at the end of each period - Test 2', () {
+      expect(Finance.ipmt(rate: 0.0824/12, per: 1, nper: 1*12, pv: 2500), -17.166666666666668);
+    });
+
+    test('Payments due at the end of each period - Test 3', () {
+      expect(Finance.ipmt(rate: 0.0824/12, per: 2, nper: 1*12, pv: 2500), -15.789337457350777);
+    });
+
+    test('Payments due at the beginning of each period - Test 1', () {
+          expect(Finance.ipmt(rate: 0.1 / 12, per: 1, nper: 24, pv: 2000, end: false), 0);
+    });
+
+    test('Payments due at the beginning of each period - Test 2', () {
+      expect(Finance.ipmt(rate: 0.0824/12, per: 2, nper: 1*12, pv: 2500, end: false), -15.681656747683354);
+    });
+  });
 }

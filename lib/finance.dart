@@ -67,7 +67,7 @@ class Finance {
     return -(fv + pv * temp) / fact;
   }
 
-  /// Returns the the number of periodic payments.
+  /// Returns the number of periodic payments.
   ///
   /// The `rate` argument specifies the rate of interest as decimal (not per cent) per period.
   ///
@@ -100,4 +100,49 @@ class Finance {
       return (-fv + pv) / pmt;
     }
   }
+
+  /// Returns the interest portion of a payment.
+  ///
+  /// The `rate` argument specifies the rate of interest as decimal (not per cent) per period.
+  ///
+  ///  The `per` argument specifies the interest paid against the loan changes during the life or the loan.. By convention, the negative sign represents
+  ///  cash flow out (i.e. money not available today).
+  ///
+  /// The `nper` argument specifies the number of compounding periods.
+  ///
+  ///  The `pv` argument specifies the present value. By convention, the negative sign represents
+  ///  cash flow out.
+  ///
+  /// If specified, the `fv` argument specifies the future value. (default=0). By convention, the negative
+  /// sign represent cash flow out.
+  ///
+  /// If specified, the `end` argument specifies when payments are due, at the end or beginning
+  /// of each period. (default=true).
+  ///
+  static num ipmt(
+      {@required num rate,
+        @required num per,
+        @required num nper,
+        @required num pv,
+        num fv = 0,
+        bool end = true}) {
+    final num totalPmt = pmt(rate: rate, nper: nper, pv: pv, fv: fv, end: end);
+    num ipmt = _rbl(rate: rate, per: per, pmt: totalPmt, pv: pv, end: end)*rate;
+    ipmt = end ? ipmt : ipmt/(1 + rate);
+    ipmt = (!end && (per == 1)) ? 0 : ipmt;
+    return ipmt;
+  }
+
+  //  This function is here to simply have a different name for the 'fv'
+  //  function to not interfere with the 'fv' keyword argument within the 'ipmt'
+  //  function.  It is the 'remaining balance on loan'.
+  static num _rbl(
+      {@required num rate,
+        @required num per,
+        @required num pmt,
+        @required num pv,
+        bool end = true}) {
+    return fv(rate: rate, nper: per-1, pmt: pmt, pv: pv, end: end);
+  }
 }
+

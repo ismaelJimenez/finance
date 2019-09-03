@@ -13,4 +13,12 @@ void main(List<String> arguments) {
   // If you only had $500/month to pay towards the loan, how long would it take
   // to pay-off a loan of $10,000 at 3% annual interest?
   print(Finance.nper(rate: 0.03 / 12, pmt: -500, pv: 10000));
+
+  // What is the amortization schedule for a 1 year loan of $2500 at 8.24%
+  // interest per year compounded monthly?
+  print(List<int>.generate(12, (int index) => index + 1)
+    .map((int per) => {
+      'per' : per,
+      'ipmt': Finance.ipmt(rate: 0.0824/12, per: per, nper: 1*12, pv: 2500),
+    }));
 }
