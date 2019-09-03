@@ -37,9 +37,7 @@ void main(List<String> arguments) {
   //  interest rate is 7% (annually) compounded monthly.
   print(Finance.pv(rate: 0.07 / 12, nper: 10 * 12, pmt: -100, fv: 20000));
 
-//  -100.00067131625819
-//  By convention, the negative sign represents cash flow out
-//  (i.e., money not available today).  Thus, to end up with
-//  $15,692.93 in 10 years saving $100 a month at 5% annual
-//  interest, one's initial deposit should also be $100.
+  //  What is the interest rate for a $8,000 loan if the loan term is 5 years and
+  //  and payments are $152.50 monthly?
+  print(Finance.rate(nper: 60, pmt: -152.5, pv: 8000, fv: 0));
 }

@@ -165,4 +165,18 @@ void main() {
           -136027.14291242755);
     });
   });
+
+  group('RATE [Finance]', () {
+    test('Payments due at the end of each period - Test 1', () {
+      expect(Finance.rate(nper: 10, pmt: 0, pv: -3500, fv: 10000), 0.11069085371426901);
+    });
+
+    test('Payments due at the end of each period - Test 2', () {
+      expect(Finance.rate(nper: 60, pmt: -152.5, pv: 8000, fv: 0), 0.004513487857250067);
+    });
+
+    test('Payments due at the beginning of each period', () {
+      expect(Finance.rate(nper: 60, pmt: -152.5, pv: 8000, fv: 0, end: false), 0.004674329929197296);
+    });
+  });
 }
