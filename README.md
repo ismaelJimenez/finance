@@ -16,7 +16,7 @@ What is the future value after 30 years of saving $1000 now, with an additional 
   print(Finance.fv(rate: 0.07 / 12, nper: 30 * 12, pmt: -100, pv: -1000));
 ```
 
-Thus, saving $1000 today and then $100 a month at 7% annual interest leads to $130,113.59 available to spend in 30 years.
+Thus, saving $1000 today and then $100 a month at 7% annual interest leads to $130,113.59 available to spend in 30 years from now.
 
 ## Payments calculation
 
