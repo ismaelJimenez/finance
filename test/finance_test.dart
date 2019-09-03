@@ -189,4 +189,34 @@ void main() {
       expect(Finance.npv(rate: 0.05, values: <num>[-15000, 1500, 2500, 3500, 4500, 6000]), 122.89485495093959);
     });
   });
+
+  group('IRR [Finance]', () {
+    test('Test 1', () {
+      expect(Finance.irr(values: <num>[-150000, 15000, 25000, 35000, 45000, 60000]), 0.05243288885941369);
+    });
+
+    test('Test 2', () {
+      expect(Finance.irr(values: <num>[-100, 0, 0, 74]), -0.09549583034897247);
+    });
+
+    test('Test 3', () {
+      expect(Finance.irr(values: <num>[-100, 39, 59, 55, 20]), 0.2809484211599611);
+    });
+
+    test('Test 4', () {
+      expect(Finance.irr(values: <num>[-100, 100, 0, -7]), -0.08329966618495913);
+    });
+
+    test('Test 5', () {
+      expect(Finance.irr(values: <num>[-100, 100, 0, 7]), 0.0620584856299296);
+    });
+
+    test('Test 6', () {
+      expect(Finance.irr(values: <num>[-5, 10.5, 1, -8, 1]), 0.08859833852439152);
+    });
+
+    test('Test 7 - No solution', () {
+      expect(Finance.irr(values: <num>[-1, -2, -3]), 'Infinity');
+    });
+  });
 }

@@ -97,3 +97,15 @@ and a discount rate of 5%.
 ```
 
 So, this investment is worth $122.894 today.
+
+## Internal Rate of Return calculation
+
+What is the Internal Rate of return of an investment that requires $15000 deposit now and then makes the 
+following withdrawals at regular (fixed) intervals:  1500, 2500, 3500, 4500, 6000?.  Assuming the ending 
+value is 0.
+
+```dart
+  print(Finance.irr(rate: 0.05, values: <num>[-15000, 1500, 2500, 3500, 4500, 6000]));
+```
+
+So, the IRR of this investment is 5.24%.

@@ -387,4 +387,65 @@ class Finance {
         .map((int index) => values[index] / pow(1 + rate, index))
         .fold(0, (num p, num c) => p + c);
   }
+
+  static num _npvPrime(
+      {@required num rate,
+        @required List<num> values}) {
+    return List<int>.generate(values.length, (int index) => index)
+        .map((int index) => -index * values[index] / pow(1 + rate, index + 1))
+        .fold(0, (num p, num c) => p + c);
+  }
+
+  static num _npv_div_npvPrime(num rate, List<num> values) {
+    final num t1 = npv(rate: rate, values: values);
+    final num t2 = _npvPrime(rate: rate, values: values);
+    return t1/t2;
+  }
+
+  /// Returns the Internal Rate of Return for periodic input values.
+  ///
+  /// The `values` argument specifies the values of the time series of cash flows.
+  /// By convention, investments or "deposits" are negative, income or "withdrawals"
+  /// are positive; `values` must begin with the initial investment, thus `values[0]`
+  /// will typically be negative.
+  ///
+  /// If specified, the `guess` argument specifies the starting guess for solving the rate of interest.
+  ///
+  /// If specified, the `tol` argument specifies the required tolerance for the solution.
+  ///
+  /// If specified, the `maxIter` argument specifies the maximum iterations in finding the solution.
+  ///
+  /// Notes
+  /// -----
+  ///    The internal rate of interest is computed by iteratively solving the
+  ///    (non-linear) equation::
+  ///     npv(rate, values) = 0
+  ///    for ``rate``.
+  ///  -----
+  ///    Use Newton's iteration until the change is less than 1e-6
+  ///    for all values or a maximum of 100 iterations is reached.
+  ///    Newton's rule is
+  ///    r_{n+1} = r_{n} - g(r_n)/g'(r_n)
+  ///     where
+  ///    g(r) is the formula
+  ///    g'(r) is the derivative with respect to r.
+
+  static num irr(
+      {@required List<num> values,
+        num guess = 0.1,
+        num tol = 1e-6,
+        num maxIter = 100}) {
+    num rn = guess;
+    num iterator = 0;
+    bool close = false;
+    while ((iterator < maxIter) && !close) {
+      final num rnp1 = rn - _npv_div_npvPrime(rn, values);
+      final num diff = (rnp1 - rn).abs();
+      close = diff < tol;
+      iterator += 1;
+      rn = rnp1;
+    }
+
+    return rn;
+  }
 }

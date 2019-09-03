@@ -41,6 +41,10 @@ void main(List<String> arguments) {
   //  and payments are $152.50 monthly?
   print(Finance.rate(nper: 60, pmt: -152.5, pv: 8000, fv: 0));
 
+  //  What is the Internal Rate of return of an investment that requires $15000 deposit now
+  //  and then makes the following withdrawals at regular (fixed)
+  //  intervals:  1500, 2500, 3500, 4500, 6000?.  Assuming the ending value is 0.
+  print(Finance.irr(values: <num>[-15000, 1500, 2500, 3500, 4500, 6000]));
 
   //  What is the Net Present Value of an investment that requires $15000 deposit now
   //  and then makes the following withdrawals at regular (fixed)
