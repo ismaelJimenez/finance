@@ -14,20 +14,21 @@ void main(List<String> arguments) {
   // to pay-off a loan of $10,000 at 3% annual interest?
   print(Finance.nper(rate: 0.03 / 12, pmt: -500, pv: 10000));
 
-  // What is the amortization schedule for a 1 year loan of $2500 at 8.24%
+  // What is the amortization schedule for a 1 year loan of $5000 at 10%
   // interest per year compounded monthly?
-  Iterable<Map<String, num>> payments =
-      List<int>.generate(12, (int index) => index + 1)
-          .map((int per) => <String, num>{
-                'per': per,
-                'pmt': Finance.pmt(rate: 0.0824 / 12, nper: 1 * 12, pv: 2500),
-                'ppmt': Finance.ppmt(
-                    rate: 0.0824 / 12, per: per, nper: 1 * 12, pv: 2500),
-                'ipmt': Finance.ipmt(
-                    rate: 0.0824 / 12, per: per, nper: 1 * 12, pv: 2500),
-              });
+  final Iterable<Map<String, num>> payments =
+      List<int>.generate(12, (int index) => index + 1).map((int per) =>
+          <String, num>{
+            'per': per,
+            'pmt': Finance.pmt(rate: 0.1 / 12, nper: 1 * 12, pv: 5000),
+            'ppmt':
+                Finance.ppmt(rate: 0.1 / 12, per: per, nper: 1 * 12, pv: 5000),
+            'ipmt':
+                Finance.ipmt(rate: 0.1 / 12, per: per, nper: 1 * 12, pv: 5000),
+          });
 
   payments.forEach(print);
-  final num interestPaid = payments.fold(0, (p, c) => p + c['ipmt']);
+  final num interestPaid =
+      payments.fold(0, (num p, Map<String, num> c) => p + c['ipmt']);
   print(interestPaid);
 }
