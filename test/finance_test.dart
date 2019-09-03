@@ -179,4 +179,14 @@ void main() {
       expect(Finance.rate(nper: 60, pmt: -152.5, pv: 8000, fv: 0, end: false), 0.004674329929197296);
     });
   });
+
+  group('NPV [Finance]', () {
+    test('Test 1', () {
+      expect(Finance.npv(rate: 0.281, values: <num>[-100, 39, 59, 55, 20]), -0.00847859163845488);
+    });
+
+    test('Test 2', () {
+      expect(Finance.npv(rate: 0.05, values: <num>[-15000, 1500, 2500, 3500, 4500, 6000]), 122.89485495093959);
+    });
+  });
 }

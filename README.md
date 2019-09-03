@@ -85,3 +85,15 @@ What is the interest rate for a $8,000 loan if the loan term is 5 years and and 
 ```
 
 The calculated interest rate is 0.45% monthly, or 5.42& annually.
+
+## Net present value calculation
+
+What is the Net Present Value of an investment that requires $15000 deposit now and then makes the following 
+withdrawals at regular (fixed) intervals:  1500, 2500, 3500, 4500, 6000?.  Assuming the ending value is 0
+and a discount rate of 5%.
+
+```dart
+  print(Finance.npv(rate: 0.05, values: <num>[-15000, 1500, 2500, 3500, 4500, 6000]));
+```
+
+So, this investment is worth $122.894 today.

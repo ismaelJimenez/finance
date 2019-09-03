@@ -359,4 +359,32 @@ class Finance {
 
     return rn;
   }
+
+  /// Returns the NPV (Net Present Value) of a cash flow series.
+  ///
+  /// The `rate` argument specifies the discount rate.
+  ///
+  /// The `values` argument specifies the values of the time series of cash flows.
+  /// The (fixed) time interval between cash flow "events" must be the same as that for
+  /// which `rate` is given (i.e., if `rate` is per year, then precisely a year is understood
+  /// to elapse between each cash flow event).  By convention, investments or "deposits" are
+  /// negative, income or "withdrawals" are positive; `values` must begin with the initial
+  /// investment, thus `values[0]` will typically be negative.
+  ///
+  /// Notes
+  /// -----
+  ///    Returns the result of: [G]_
+  ///    .. math :: \\sum_{t=0}^{M-1}{\\frac{values_t}{(1+rate)^{t}}}
+  ///
+  /// References
+  /// ----------
+  ///    .. [G] L. J. Gitman, "Principles of Managerial Finance, Brief," 3rd ed.,
+  ///       Addison-Wesley, 2003, pg. 346.
+  static num npv(
+      {@required num rate,
+        @required List<num> values}) {
+    return List<int>.generate(values.length, (int index) => index)
+        .map((int index) => values[index] / pow(1 + rate, index))
+        .fold(0, (num p, num c) => p + c);
+  }
 }
