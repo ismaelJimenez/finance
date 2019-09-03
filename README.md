@@ -66,7 +66,7 @@ Thus, the total interest paid are close to $275.
 
 ## Present Value calculation
 
-What is the present value (e.g., the initial investment) of an investment that needs to total $20000 
+What is the present value (e.g., the initial investment) of an investment that needs to total $20,000 
 after 10 years of saving $100 every month?  Assume the interest rate is 7% (annually) compounded monthly.
 
 ```dart
