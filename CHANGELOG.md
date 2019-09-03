@@ -1,3 +1,7 @@
+## [0.1.0] - 3/9/19
+
+*  Added nper, ppmt, ipmt, pv, rate, npv and irr. Stibilize interfaces
+
 ## [0.0.5] - 2/9/19
 
 *  Extracted quote retrieval to finance_quote package. Added fv and pmt functions.
