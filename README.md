@@ -11,13 +11,13 @@ The easiest way to use this library is via the top-level functions. They allow y
 
 ## Future Value calculation
 
-What is the future value after 30 years of saving $1000 now, with an additional monthly savings of $100.  Assume the interest rate is 7% (annually) compounded monthly?
+What is the future value after 30 years of saving $1,000 now, with an additional monthly savings of $100. Assume the interest rate is 7% (annually) compounded monthly?
 
 ```dart
   print(Finance.fv(rate: 0.07 / 12, nper: 30 * 12, pmt: -100, pv: -1000));
 ```
 
-Thus, saving $1000 today and then $100 a month at 7% annual interest leads to $130,113.59 available to spend in 30 years from now.
+Thus, saving $1,000 today and then $100 a month at 7% annual interest leads to $130,113.59 available to spend in 30 years from now.
 
 ## Payments calculation
 
@@ -27,7 +27,7 @@ What is the monthly payment needed to pay off a $100,000 loan in 10 years at an 
   print(Finance.pmt(rate: 0.025 / 12, nper: 10 * 12, pv: 100000));
 ```  
 
-Thus, in order to pay-off (i.e., have a future-value of 0) the $100,000 obtained today, a monthly payment of $942.69 would be required.  Note that this example illustrates usage of future value having a default value of 0.
+Thus, in order to pay-off (i.e., have a future-value of 0) the $100,000 obtained today, a monthly payment of $942.69 would be required.  Note that this example illustrates usage of future value having a default value of $0.
 
 ## Number of period calculation
 
@@ -41,7 +41,7 @@ So, over 20 months would be required to pay off the loan.
 
 ## Principal and Interest payment calculation
 
-What is the amortization schedule for a 1 year loan of $5000 at 10% interest per year compounded monthly? 
+What is the amortization schedule for a 1 year loan of $5,000 at 10% interest per year compounded monthly? 
 And the total interest payments?
 
 ```dart
@@ -89,8 +89,8 @@ The calculated interest rate is 0.45% monthly, or 5.42% annually.
 
 ## Net present value calculation
 
-What is the Net Present Value of an investment that requires $15000 deposit now and then makes the following 
-withdrawals at regular (fixed) intervals:  1500, 2500, 3500, 4500, 6000?.  Assuming the ending value is 0
+What is the Net Present Value of an investment that requires $15,000 deposit now and then makes the following 
+withdrawals at regular (fixed) intervals:  $1,500, $2,500, $3,500, $4,500, $6,000?.  Assuming the ending value is $0
 and a discount rate of 5%.
 
 ```dart
@@ -101,9 +101,9 @@ So, this investment is worth $122.894 today.
 
 ## Internal Rate of Return calculation
 
-What is the Internal Rate of return of an investment that requires $15000 deposit now and then makes the 
-following withdrawals at regular (fixed) intervals:  1500, 2500, 3500, 4500, 6000?.  Assuming the ending 
-value is 0.
+What is the Internal Rate of return of an investment that requires $15,000 deposit now and then makes the 
+following withdrawals at regular (fixed) intervals:  $1,500, $2,500, $3,500, $4,500, $6,000?.  Assuming the ending 
+value is $0.
 
 ```dart
   print(Finance.irr(rate: 0.05, values: <num>[-15000, 1500, 2500, 3500, 4500, 6000]));
