@@ -385,7 +385,7 @@ class Finance {
   static num npv(
       {@required required num rate, @required required List<num> values}) {
     return List<int>.generate(values.length, (int index) => index)
-        .map((int index) => values[index] / pow(1 + rate, index))
+        .map((int index) => values[index] / pow(1 + rate, index + 1))
         .fold(0, (num p, num c) => p + c);
   }
 
