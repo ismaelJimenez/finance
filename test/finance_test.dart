@@ -196,6 +196,12 @@ void main() {
               rate: 0.05, values: <num>[-15000, 1500, 2500, 3500, 4500, 6000]),
           122.89485495093959);
     });
+
+    test('Test 3', () {
+      expect(
+          Finance.npv(rate: 0.05, values: <num>[1500, 2500, 3500, 4500, 6000]),
+          15122.89);
+    });
   });
 
   group('IRR [Finance]', () {
