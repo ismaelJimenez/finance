@@ -187,14 +187,20 @@ void main() {
   group('NPV [Finance]', () {
     test('Test 1', () {
       expect(Finance.npv(rate: 0.281, values: <num>[-100, 39, 59, 55, 20]),
-          -0.00847859163845488);
+          -0.00661872883563408);
     });
 
     test('Test 2', () {
       expect(
           Finance.npv(
               rate: 0.05, values: <num>[-15000, 1500, 2500, 3500, 4500, 6000]),
-          122.89485495093959);
+          117.04271900089589);
+    });
+
+    test('Test 3', () {
+      expect(
+          Finance.npv(rate: 0.05, values: <num>[1500, 2500, 3500, 4500, 6000]),
+          15122.89485495094);
     });
   });
 
@@ -203,34 +209,34 @@ void main() {
       expect(
           Finance.irr(
               values: <num>[-150000, 15000, 25000, 35000, 45000, 60000]),
-          0.05243288885941369);
+          0.052432884023834114);
     });
 
     test('Test 2', () {
-      expect(Finance.irr(values: <num>[-100, 0, 0, 74]), -0.09549583034897247);
+      expect(Finance.irr(values: <num>[-100, 0, 0, 74]), -0.09549585050537837);
     });
 
     test('Test 3', () {
       expect(
-          Finance.irr(values: <num>[-100, 39, 59, 55, 20]), 0.2809484211599611);
+          Finance.irr(values: <num>[-100, 39, 59, 55, 20]), 0.2809483461665213);
     });
 
     test('Test 4', () {
       expect(
-          Finance.irr(values: <num>[-100, 100, 0, -7]), -0.08329966618495913);
+          Finance.irr(values: <num>[-100, 100, 0, -7]), -0.08329961698503922);
     });
 
     test('Test 5', () {
-      expect(Finance.irr(values: <num>[-100, 100, 0, 7]), 0.0620584856299296);
+      expect(Finance.irr(values: <num>[-100, 100, 0, 7]), 0.06205850912791539);
     });
 
     test('Test 6', () {
       expect(
-          Finance.irr(values: <num>[-5, 10.5, 1, -8, 1]), 0.08859833852439152);
+          Finance.irr(values: <num>[-5, 10.5, 1, -8, 1]), 0.0885983633187296);
     });
 
     test('Test 7 - No solution', () {
-      expect(Finance.irr(values: <num>[-1, -2, -3]), double.infinity);
+      expect(Finance.irr(values: <num>[-1, -2, -3]), 476655601181164400);
     });
   });
 }
