@@ -5,10 +5,10 @@ author: "Ismael Jiménez <ijimenezm@hotmail.es>"
 homepage: https://github.com/ismaelJimenez/finance
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  meta: ^1.1.7
+  meta: ^1.7.0
 
 dev_dependencies:
   test: '>=1.3.0 <1.6.8'
