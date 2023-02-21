@@ -29,7 +29,7 @@ void main(List<String> arguments) {
 
   payments.forEach(print);
   final num interestPaid =
-      payments.fold(0, (num p, Map<String, num> c) => p + c['ipmt']);
+      payments.fold(0, (num p, Map<String, num> c) => p + c['ipmt']!);
   print(interestPaid);
 
   //  What is the present value (e.g., the initial investment) of an investment that
